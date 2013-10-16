@@ -28,6 +28,8 @@ class DB(object):
                 CREATE TABLE articles
                     (added BIGINT,
                         title TEXT,
+                        author TEXT,
+                        signed BOOL,
                         magnet TEXT,
                         hash BLOB)""")
             c.execute("""

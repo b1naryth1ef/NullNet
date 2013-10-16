@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 
-from libnull.db import DB
+from libnull.tracker.db import DB
 
 app = Flask(__name__)
 
@@ -14,12 +14,11 @@ except: pass
 
 @app.route("/")
 def stats_route():
-    print request.values.items()
-    # return jsonify({
-    #         "globhash": GLOB_HASH,
-    #         "num_articles": db.get_num_articles(),
-    #         "num_peers": db.get_num_peers()
-    #     })
+    return jsonify({
+            "globhash": GLOB_HASH,
+            "num_articles": db.get_num_articles(),
+            "num_peers": db.get_num_peers()
+        })
 
 @app.route("/post", methods=["POST"])
 def post_route():
@@ -33,4 +32,8 @@ def announce_route():
 
 @app.route("/scrape")
 def scrape_route():
+    return "", 200
+
+@app.route("/query")
+def query_route():
     return "", 200
